@@ -1,8 +1,8 @@
 class Reservation:
-    def __init__(self, nom, place, place_speciale):
+    def __init__(self, nom, place, status):
         self.__nom = nom
         self.__place = place
-        self.__place_speciale = place_speciale
+        self.__status = status
 
     @property
     def nom(self):
@@ -21,9 +21,9 @@ class Reservation:
         self.__place = value
 
     @property
-    def place_speciale(self):
-        return self.__place_speciale
+    def status(self):
+        return self.__status
 
-    @place_speciale.setter
-    def place_speciale(self, value):
-        self.__place_speciale = value
+    @status.setter
+    def status(self, value):
+        self.__status = value

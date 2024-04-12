@@ -1,5 +1,5 @@
 import database as db
-from salle_cinema.reservation import SalleCinema
+from reservations.reservation import Reservation
 
 class ReservationDao:
     connexion = db.connexion_db()
@@ -8,9 +8,9 @@ class ReservationDao:
         pass
 
     @classmethod
-    def reserver_place(cls, rsv:SalleCinema): 
-            sql = "INSERT INTO reservation (nom, place) VALUES (%s, %s)"
-            params = (rsv.nom, rsv.place)
+    def reserver_place(cls, rsv:Reservation): 
+            sql = "INSERT INTO reservation (nom, place, status) VALUES (%s, %s, %s)"
+            params = (rsv.nom, rsv.place, rsv.status)
             try:
                 ReservationDao.connexion.cursor()
                 ReservationDao.cursor.execute(sql, params)
@@ -35,7 +35,7 @@ class ReservationDao:
     
     @classmethod
     def nombre_places_disponibles(cls):
-        capacite_totale = 30
+        capacite_totale = 200
         sql = "SELECT COUNT(*) FROM reservation"
         try:
             ReservationDao.cursor.execute(sql)
@@ -69,18 +69,4 @@ class ReservationDao:
             message = f"Toutes les réservations pour {nom} ont été annulées."
         except Exception as ex:
             print(f"Erreur lors de l'annulation des réservations pour {nom}: {ex}")
-        return message
-    
-    @classmethod
-    def reserver_place_speciale(cls,rsv:SalleCinema):
-        sql = "INSERT INTO reservation (nom, place_speciale) VALUES (%s, %s)"
-        params = (rsv.nom, rsv.place_speciale)
-        try:
-            ReservationDao.connexion.cursor()
-            ReservationDao.cursor.execute(sql, params)
-            ReservationDao.connexion.commit()
-            message = f"Ajout de {rsv.nom} à la place spéciale {rsv.place_speciale} avec succès."
-        except Exception as ex:
-            message = f"Erreur lors de l'ajout: {ex}"
-            
         return message
