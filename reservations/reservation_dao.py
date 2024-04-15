@@ -30,7 +30,7 @@ class ReservationDao:
             message = "Success"
         except Exception as ex:
             message = f"Erreur lors de la récupération des réservations: {ex}"
-        return reservations, message
+        return  message, reservations
     
     @classmethod
     def nombre_places_disponibles(cls):
@@ -38,11 +38,11 @@ class ReservationDao:
         sql = "SELECT COUNT(*) FROM reservation"
         try:
             ReservationDao.cursor.execute(sql)
-            (nombre_reservations,) = ReservationDao.cursor.fetchone()
+            nombre_reservations = ReservationDao.cursor.fetchone()
             places_disponibles = capacite_totale - nombre_reservations
-            message = f"Nombre de places disponibles : {places_disponibles}",
+            message = "Success"
         except Exception as ex:
-            print(f"Erreur lors du calcul des places disponibles : {ex}")
+            message = "Error"
         return message, places_disponibles
     
     @classmethod
@@ -55,7 +55,7 @@ class ReservationDao:
             message = "Success"
         except Exception as ex:
             message = "Error"
-        return reservations, message
+        return  message, reservations
     
     @classmethod
     def annuler_reservation(cls, nom):
