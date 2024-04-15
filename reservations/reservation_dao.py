@@ -15,10 +15,9 @@ class ReservationDao:
                 ReservationDao.connexion.cursor()
                 ReservationDao.cursor.execute(sql, params)
                 ReservationDao.connexion.commit()
-                message = f"Ajout de {rsv.nom} à la place {rsv.place} avec succès."
+                message = "Success"
             except Exception as ex:
-                message = f"Erreur lors de l'ajout: {ex}"
-            
+                message = "Error"
             return message
     
     @classmethod

@@ -1,10 +1,10 @@
 from flask import Flask, render_template, url_for, request, session, redirect
 from flask_bcrypt import Bcrypt
 
-#from employes.Employe import Employe
-#from employes.employe_dao import EmployeDao
-#from departements.departement import Departement
-#from departements.departement_dao import DepartementDao
+from events.event import Event
+from events.event_dao import EventDao
+from reservations.reservation import Reservation
+from reservations.reservation_dao import ReservationDao
 from users.user import User
 from users.user_dao import UserDao
 
