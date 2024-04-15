@@ -18,7 +18,7 @@ class EventDao:
             message = "Success"
         except Exception as ex:
             EventDao.connexion.rollback()
-            message = f"Error"
+            message = "Error"
         return message
 
     @classmethod
