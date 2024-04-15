@@ -1,5 +1,6 @@
 import database as db
-from reservations.reservation import Reservation
+#from reservations.reservation import Reservation
+from reservation import Reservation
 
 class ReservationDao:
     connexion = db.connexion_db()
@@ -9,7 +10,7 @@ class ReservationDao:
 
     @classmethod
     def reserver_place(cls, rsv:Reservation): 
-            sql = "INSERT INTO reservation (nom, place, status) VALUES (%s, %s, %s)"
+            sql = "INSERT INTO reservations (nom, place, status) VALUES (%s, %s, %s)"
             params = (rsv.nom, rsv.place, rsv.status)
             try:
                 ReservationDao.connexion.cursor()
@@ -22,7 +23,7 @@ class ReservationDao:
     
     @classmethod
     def afficher_places_reservees(cls):
-        sql = "SELECT place FROM reservation"
+        sql = "SELECT place FROM reservations"
         try:
             ReservationDao.cursor.execute(sql)
             reservations = ReservationDao.cursor.fetchall()
@@ -35,19 +36,19 @@ class ReservationDao:
     @classmethod
     def nombre_places_disponibles(cls):
         capacite_totale = 200
-        sql = "SELECT COUNT(*) FROM reservation"
+        sql = "SELECT COUNT(*) FROM reservations"
         try:
             ReservationDao.cursor.execute(sql)
-            nombre_reservations = ReservationDao.cursor.fetchone()
+            (nombre_reservations,) = ReservationDao.cursor.fetchone()
             places_disponibles = capacite_totale - nombre_reservations
-            message = "Success"
+            message = "Success", places_disponibles
         except Exception as ex:
             message = "Error"
-        return message, places_disponibles
+        return message
     
     @classmethod
     def filtrer_reservations_par_personne(cls,nom):
-        sql = "SELECT * FROM reservation WHERE nom = %s"
+        sql = "SELECT * FROM reservations WHERE nom = %s"
         try:
             ReservationDao.connexion.cursor()
             ReservationDao.cursor.execute(sql, (nom,))
@@ -59,7 +60,7 @@ class ReservationDao:
     
     @classmethod
     def annuler_reservation(cls, nom):
-        sql = "DELETE FROM reservation WHERE nom = %s"
+        sql = "DELETE FROM reservations WHERE nom = %s"
         try:
             ReservationDao.connexion.cursor()
             ReservationDao.cursor.execute(sql, (nom,))

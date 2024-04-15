@@ -1,7 +1,9 @@
 import database as db
 import flask_bcrypt as bcrypt
-#from users.user import User
-from user import User
+from users.user import User
+
+#from user import User
+# init ^
 
 
 class UserDao:
