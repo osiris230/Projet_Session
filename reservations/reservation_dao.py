@@ -41,10 +41,10 @@ class ReservationDao:
             ReservationDao.cursor.execute(sql)
             (nombre_reservations,) = ReservationDao.cursor.fetchone()
             places_disponibles = capacite_totale - nombre_reservations
-            message = f"Nombre de places disponibles : {places_disponibles}"
+            message = f"Nombre de places disponibles : {places_disponibles}",
         except Exception as ex:
             print(f"Erreur lors du calcul des places disponibles : {ex}")
-        return message
+        return message, places_disponibles
     
     @classmethod
     def filtrer_reservations_par_personne(cls,nom):
@@ -53,10 +53,10 @@ class ReservationDao:
             ReservationDao.connexion.cursor()
             ReservationDao.cursor.execute(sql, (nom,))
             reservations = ReservationDao.cursor.fetchall()
-    
+            message = "Success"
         except Exception as ex:
-            print(f"Erreur lors de la récupération des réservations pour {nom}: {ex}")
-        return reservations
+            message = "Error"
+        return reservations, message
     
     @classmethod
     def annuler_reservation(cls, nom):
