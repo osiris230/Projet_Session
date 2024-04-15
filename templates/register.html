@@ -1,0 +1,52 @@
+{% extends 'default.html' %}
+{% block title %} Ajouter un nouvel utilisateur {% endblock %}
+
+
+{% block content %}
+
+<h1>Veuillez remplir ce formulaire pour enregistrer un nouvel utilisateur</h1>
+<div class="container">
+    {% if message=='error'%}
+    <p class="alert alert-danger" role="alert">Tous les champs sont obligatoires !</p>
+    {% elif message == 'Error'%}
+    <p class="alert alert-warning" role="warning">Erreur lors de l'ajout, si l'erreur persiste, veuillez contacter le support.</p>
+    {% elif message=='Success'%}
+    <p class="alert alert-success" role="success">L'utilisateur {{users.username}} a été ajouté avec succès !</p>
+    {%endif%}
+</div>
+
+
+    <form action="{{url_for('register')}}" method="POST">
+        
+        <div class="form-floating mb-3">
+            <input  name="nom_complet" type="text" class="form-control" id="nom_complet" >
+            <label for="nom_complet">Nom complet</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input  name="username" type="text" class="form-control" id="username" >
+            <label for="username">Utilisateur</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input  name="password" type="text" class="form-control" id="password" >
+            <label for="password">Mot de passe</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input  name="email" type="text" class="form-control" id="email" >
+            <label for="email">Courriel</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            <input  name="status" type="text" class="form-control" id="status" >
+            <label for="status">status</label>
+        </div>
+        
+        <div class ="form-floating mb-3">
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+        
+    </form>
+
+{% endblock %}
