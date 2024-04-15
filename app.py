@@ -24,7 +24,7 @@ def register():
     if request.method == "POST":
         nom_complet = req['nom_complet']
         username = req['username']
-        password = req['mdp']
+        password = req['password']
         email = req['email']
         status = req['status']
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
