@@ -1,0 +1,32 @@
+{% extends 'default.html' %}
+
+{% block title %} Événements {% endblock %}
+
+{% block content %}
+  
+<h1>Liste des événements</h1>
+
+<table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Date</th>
+        <th scope="col">Emplacement</th>
+        <th scope="col">Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr>
+            <td>{{ events[0] }}</td>
+            <td>{{ events[1] }}</td>
+            <td>{{ events[2] }}</td>
+            <td>{{ events[3] }}</td>
+            <td>{{ events[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
