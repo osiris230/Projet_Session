@@ -1,5 +1,7 @@
 import database as db
 from events.event import Event
+#from event import Event
+# init ^
 
 class EventDao:
     connexion = db.connexion_db()

@@ -1,6 +1,7 @@
 import database as db
-#from reservations.reservation import Reservation
-from reservation import Reservation
+from reservations.reservation import Reservation
+#from reservation import Reservation
+# init ^
 
 class ReservationDao:
     connexion = db.connexion_db()
@@ -41,10 +42,10 @@ class ReservationDao:
             ReservationDao.cursor.execute(sql)
             (nombre_reservations,) = ReservationDao.cursor.fetchone()
             places_disponibles = capacite_totale - nombre_reservations
-            message = "Success", places_disponibles
+            message = "Success"
         except Exception as ex:
             message = "Error"
-        return message
+        return message , places_disponibles
     
     @classmethod
     def filtrer_reservations_par_personne(cls,nom):
@@ -59,14 +60,15 @@ class ReservationDao:
         return  message, reservations
     
     @classmethod
-    def annuler_reservation(cls, nom):
-        sql = "DELETE FROM reservations WHERE nom = %s"
+    def annuler_reservation(cls,rsv:Reservation,rsv_id):
+        sql = "UPDATE reservations SET nom=%s, place=%s, status=%s WHERE id=%s"
+        params = (rsv.nom, rsv.place, rsv.status, rsv_id)
         try:
             ReservationDao.connexion.cursor()
-            ReservationDao.cursor.execute(sql, (nom,))
+            ReservationDao.cursor.execute(sql, params)
             ReservationDao.connexion.commit()
             
-            message = f"Toutes les réservations pour {nom} ont été annulées."
+            message = "Success"
         except Exception as ex:
-            print(f"Erreur lors de l'annulation des réservations pour {nom}: {ex}")
+            message = "Error"
         return message
