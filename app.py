@@ -69,3 +69,8 @@ def logout():
 @app.route("/player")
 def player():
     return render_template("player.html")
+
+@app.route("/events")
+def events():
+    events = EventDao.lister_evenements()
+    return render_template("events.html", events=events)
