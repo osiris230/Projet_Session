@@ -29,11 +29,11 @@ class EventDao:
         try:
             EventDao.connexion.cursor()
             EventDao.cursor.execute(sql)
-            evenements = EventDao.cursor.fetchall()
+            events = EventDao.cursor.fetchall()
             message = "Success"
         except Exception as ex:
             return [], "Error"
-        return message, evenements
+        return events
         
 
     @classmethod

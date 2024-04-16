@@ -65,7 +65,3 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for('login'))
-
-@app.route("/player")
-def player():
-    return render_template("player.html")
