@@ -67,9 +67,15 @@
                 <li><a class="dropdown-item" href="{{url_for('register')}}">S'inscrire</a></li>
               </ul>
             </li>
-            
-            
+                        
             <!-- Cinquieme bouton nav bar -->
+            {% if session %}  
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('profil')}}">Profil</a>
+              </li>
+            {% endif %}
+
+            <!-- Sixieme bouton nav bar -->
             {% if session %}  
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{url_for('logout')}}">Logout</a>
