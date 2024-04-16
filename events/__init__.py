@@ -1,5 +1,5 @@
-from event import Event
-from event_dao import EventDao
+#from event import Event
+#from event_dao import EventDao
 
 #event = Event("Johnny Rupy","2024-05-05","Stade Pepis",120)
 #message = EventDao.ajouter_evenement(event)
