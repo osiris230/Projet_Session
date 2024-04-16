@@ -32,24 +32,38 @@ Instructions détaillées sur comment utiliser le système après installation.
 
 Authentification : Système d'authentification pour les utilisateurs.
 Profil : Création et gestion de profils utilisateurs avec nom complet, username, password et status.
-Gestion des Événements
+
+## Gestion des Événements
+
 Administration des Événements : Ajout, modification et suppression d'événements.
 Catégorisation : Attribution de catégories ou de tags à chaque événement.
 Visualisation : Affichage d'une liste d'événements avec nom, date, emplacement et prix.
-Système de Réservation
+
+## Gestion des Utilisateurs
+
+## Système de Réservation
+
 Réservations : Système de réservation de billets, avec gestion des statuts (confirmé, en attente, annulé).
-Interface Utilisateur
+
+## Interface Utilisateur
+
 Navigation : Interface intuitive avec des pages pour l'accueil, les événements, et le login.
-Technologies Utilisées
+
+## Technologies Utilisées
+
 Python3
 Flask
 SQL
 Jinja2
 MySQL Workbench
-Sécurité
+
+## Sécurité
+
 Validation des formulaires : Assurer que les données entrées par les utilisateurs sont valides.
 Encryption avec Bcrypt : Utilisation de Bcrypt pour l'encryption des mots de passe.
-Contributeurs
+
+## Contributeurs
+
 Maxime St-Pierre
 Michael Brunet
 Stéphane Labrie
