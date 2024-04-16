@@ -46,3 +46,15 @@ class UserDao:
             message = "Error"
             user = []
         return (message,user)
+    
+    @classmethod
+    def get_by_username(cls, username):
+        sql = "SELECT * FROM users WHERE username = %s"
+        try:
+            UserDao.cursor.execute(sql, (username,))
+            user = UserDao.cursor.fetchone()
+            message = "Success"
+        except Exception as ex:
+            message = "Error"
+            user = []
+        return (message, user)
