@@ -45,36 +45,19 @@
             
             
             <!-- Deuxieme bouton nav bar -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="{{url_for('users')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Connexion
-              </a>
-
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{url_for('login')}}">Se connecter</a></li>
-                <li><a class="dropdown-item" href="{{url_for('register')}}">S'inscrire</a></li>
-              </ul>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('events')}}">Événements</a>
             </li>
             
                      
             <!-- Troisieme bouton nav bar -->
-            <li class="nav-item dropdown">
-
-              <a class="nav-link dropdown-toggle" href="{{url_for('login')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Connexion
-              </a>
-
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{url_for('login')}}">Se connecter</a></li>
-                <li><a class="dropdown-item" href="{{url_for('register')}}">S'inscrire</a></li>
-              </ul>
-
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('reservation')}}">Réservations</a>
             </li>
             
             <!-- Quatrieme bouton nav bar -->  
             
             <li class="nav-item dropdown">
-
               <a class="nav-link dropdown-toggle" href="{{url_for('login')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Connexion
               </a>
@@ -83,16 +66,15 @@
                 <li><a class="dropdown-item" href="{{url_for('login')}}">Se connecter</a></li>
                 <li><a class="dropdown-item" href="{{url_for('register')}}">S'inscrire</a></li>
               </ul>
-
-            </li>          
-          
+            </li>
+            
+            
             <!-- Cinquieme bouton nav bar -->
             {% if session %}  
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{url_for('logout')}}">Logout</a>
               </li>
             {% endif %}
-
           </ul>
         </div>
       </div>
