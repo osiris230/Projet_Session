@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.secret_key='secretkey'
 bcrypt = Bcrypt(app)
 
-@app.route("/home")
+@app.route("/")
 def home():
     return render_template("home.html")
 
@@ -65,3 +65,12 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+@app.route("/player")
+def player():
+    return render_template("player.html")
+
+@app.route("/events")
+def events():
+    events = EventDao.lister_evenements()
+    return render_template("events.html", events=events)
