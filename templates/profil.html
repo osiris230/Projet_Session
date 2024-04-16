@@ -1,0 +1,26 @@
+{% extends 'default.html' %}
+
+{% block title %} Acceuil {% endblock %}
+
+{% block content %}
+
+<body>
+    <h1>Profil de {{ user[2] }}</h1> <!-- Assumant que l'index 1 est le username -->
+    <p>ID: {{ user[0] }}</p>
+    <p>Nom d'utilisateur: {{ user[2] }}</p> <!-- Assumant que l'index 2 est l'email -->
+    <p>Nom complet: {{ user[1] }}</p> <!-- Adaptez selon la structure de votre base de données -->
+    <p>Email: {{ user[4] }}</p>
+    <h2>Réservations:</h2>
+    {% if reservations %}
+        <ul>
+            {% for reservation in reservations %}
+                <li>Réservation ID: {{ reservation[0] }}, Date: {{ reservation[2] }}, Lieu: {{ reservation[3] }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune réservation trouvée.</p>
+    {% endif %}
+    
+</body>
+
+{% endblock %}

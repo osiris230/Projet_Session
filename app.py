@@ -32,9 +32,9 @@ def register():
             message="error"
         else:
                 
-            user = user(nom_complet,username,hashed_password,email,status)
+            user = User(nom_complet,username,hashed_password,email,status)
             message = UserDao.create(user)
-    return render_template(f'register.html', message=message,user=user)
+    return render_template('register.html', message=message,user=user)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -43,7 +43,7 @@ def login():
     user = None
     if request.method == "POST":
         username = req['username']
-        password = req['mdp']
+        password = req['password']
         if username == '' or password == '':
             message = 'error'
         else:
@@ -51,7 +51,7 @@ def login():
             if message=='Success' and user != None:
                 if bcrypt.check_password_hash(user[3], password):
                     session['username'] = user[2]
-                    session['nom'] = user[1]
+                    session['nom_complet'] = user[1]
                     return redirect(url_for('home'))
                 else:
                     message = 'Nom d\'user ou mot de passe incorrect.'
@@ -74,3 +74,19 @@ def player():
 def events():
     events = EventDao.lister_evenements()
     return render_template("events.html", events=events)
+
+@app.route("/profil")
+def profile():
+    if 'username' in session:
+        username = session['username']
+        user = UserDao.get_by_username(username)
+        if user:
+            nom_complet = user[1]  
+            message, reservations = ReservationDao.filtrer_reservations_par_personne(nom_complet)
+            if message == "Success":
+                return render_template('profile.html', user=user, reservations=reservations)
+            else:
+                return "Erreur lors de la récupération des réservations", 500
+        else:
+            return "Profil non trouvé", 404
+    return redirect(url_for('login'))
