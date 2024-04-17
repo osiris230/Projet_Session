@@ -7,7 +7,26 @@
 <head>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
+    <style>
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #000000;
+            color: white;
+        }
+    </style>
+    <style>
+        .card-body p {
+            padding-bottom: 10px; /* Ajoute un peu d'espace en bas de chaque paragraphe */
+            border-bottom: 1px solid #eee; /* Ligne grise claire */
+            margin-bottom: 10px; /* Espacement entre les paragraphes */
+        }
+        .card-body p:last-child {
+            border-bottom: none; /* Assure qu'il n'y a pas de bordure sur le dernier paragraphe */
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-5">
@@ -22,16 +41,27 @@
                     <p class="card-text">Status: {{ user[5] }}</p>
                 </div>
             </div>
-
-            <h3 class="mt-5">Réservations</h3>
             {% if reservations %}
-            <ul class="list-group">
-                {% for reservation in reservations %}
-                <li class="list-group-item">
-                    Réservation ID: {{ reservation[0] }}, Nom: {{ reservation[1] }}, Place: {{ reservation[2] }}, Status: {{ reservation[3] }}
-                </li>
-                {% endfor %}
-            </ul>
+            <div class="col-md-12 mt-5">
+                <h3>Vos Réservations</h3>
+                <div class="row">
+                    {% for reservation in reservations %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                Réservation #{{ reservation[0] }}
+                            </div>
+                            <div class="card-body">
+                                
+                                <p class="card-text">Nom: {{ reservation[1]}}</p>
+                                <p class="card-text">Place: {{ reservation[2] }}</p>
+                                <p class="card-text">Status: {{ reservation[3] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
             {% else %}
             <p>Aucune réservation trouvée.</p>
             {% endif %}
