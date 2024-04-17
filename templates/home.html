@@ -11,28 +11,11 @@
             <li><a href="events" class="button primary">Massive hard on</a></li>
         </ul>
     </div>
-    <a href="#one" class="more scrolly">En voir plus</a>
+    <a href="#spotlight" class="more scrolly">En voir plus</a>
 </section>
 
-<!-- One -->
-<section id="one" class="wrapper style1 special">
-    <div class="inner">
-        <header class="major">
-            <h2>Arcu aliquet vel lobortis ata nisl<br />
-            eget augue amet aliquet nisl cep donec</h2>
-            <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-            fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
-        </header>
-        <ul class="icons major">
-            <li><span class="icon fa-gem major style1"><span class="label">Lorem</span></span></li>
-            <li><span class="icon fa-heart major style2"><span class="label">Ipsum</span></span></li>
-            <li><span class="icon solid fa-code major style3"><span class="label">Dolor</span></span></li>
-        </ul>
-    </div>
-</section>
-
-<!-- Two -->
-    <section class="spotlight">
+<!-- Spotlight -->
+    <section id="spotlight" class="spotlight">
         <div class="video-container">
             <video autoplay loop muted controls style="width: 100%; max-width: 950px;">
                 <source src="static/images/feq.mp4" type="video/mp4">
@@ -67,8 +50,8 @@
     </section>
 </section>
 
-<!-- Three -->
-<section id="three" class="wrapper style3 special">
+<!-- Evenement -->
+<section id="evenement" class="wrapper style3 special">
     <div class="inner">
         <header class="major">
             <h2>Accumsan mus tortor nunc aliquet</h2>
@@ -104,6 +87,23 @@
     </div>
 </section>
 
+<!-- Publicite app -->
+<section id="publicite_app" class="wrapper style1 special">
+    <div class="inner">
+        <header class="major">
+            <h1>Découvrez une expérience unique avec notre toute nouvelle application !</h1>
+            <p>Téléchargez-la dès maintenant sur votre appareil préféré et accédez à une multitude d'événements passionnants, 
+                de billets exclusifs et bien plus encore.<br />
+                Ne manquez plus jamais une occasion de vivre des moments inoubliables.<br />
+                Disponible dès maintenant sur l'App Store et Google Play Store !</p>
+        </header>
+        <ul class="icons major">
+            <li><span class="fa-brands fa-google-play"><span class="label"></span></span></li>
+            <li><span class="fa-brands fa-app-store-ios"><span class="label"></span></span></li>      
+        </ul>
+    </div>
+</section>
+
 <!-- CTA -->
 <section id="cta" class="wrapper style4">
     <div class="inner">
@@ -112,8 +112,8 @@
             <p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
         </header>
         <ul class="actions stacked">
-            <li><a href="#" class="button fit primary">Activate</a></li>
-            <li><a href="#" class="button fit">Learn More</a></li>
+            <li><a href="{{url_for('login')}}" class="button fit primary">Connexion</a></li>
+            <li><a href="{{url_for('events')}}" class="button fit">Learn More</a></li>
         </ul>
     </div>
 </section>
