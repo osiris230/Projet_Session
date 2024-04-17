@@ -96,3 +96,7 @@ def profil():
         else:
             return "Profil non trouvé", 404
     return redirect(url_for('login'))
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
