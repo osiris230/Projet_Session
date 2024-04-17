@@ -48,13 +48,13 @@ class ReservationDao:
         return message , places_disponibles
     
     @classmethod
-    def filtrer_reservations_par_personne(cls,nom_complet):
+    def filtrer_reservations_par_personne(cls,nom):
         sql = "SELECT * FROM reservations WHERE nom = %s"
         reservations = None
         try:
             ReservationDao.connexion.cursor()
-            ReservationDao.cursor.execute(sql, (nom_complet,))
-            reservations = ReservationDao.cursor.fetchone()
+            ReservationDao.cursor.execute(sql, (nom,))
+            reservations = ReservationDao.cursor.fetchall()
             message = "Success"
         except Exception as ex:
             print(ex)
