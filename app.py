@@ -85,10 +85,9 @@ def profil():
     print("reservations",reservations)
     if 'username' in session:
         username = session['username']
-        
         if user:
             nom_complet = user[1]  
-            #message, reservations = ReservationDao.filtrer_reservations_par_personne(nom_complet)
+            
             print(message,reservations)
             if message == "Success":
                 return render_template('profil.html',message=message, user=user, reservations=reservations)

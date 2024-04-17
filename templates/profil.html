@@ -4,24 +4,45 @@
 
 {% block content %}
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Profil de l'utilisateur</title>
+</head>
 <body>
-    
-    <h1>Profil de {{ user[2] }}</h1> <!-- Assumant que l'index 1 est le username -->
-    <p>ID: {{ user[0] }}</p>
-    <p>Nom d'utilisateur: {{ user[2] }}</p> <!-- Assumant que l'index 2 est l'email -->
-    <p>Nom complet: {{ user[1] }}</p> <!-- Adaptez selon la structure de votre base de données -->
-    <p>Email: {{ user[4] }}</p>
-    <h2>Réservations:</h2>
-    {% if reservations != None %}
-        <ul>
-            {% for reservation in reservations %}
-                <li>Réservation ID: {{ reservation[0] }}, Date: {{ reservation[2] }}, Lieu: {{ reservation[3] }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Aucune réservation trouvée.</p>
-    {% endif %}
-    
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <h5 class="card-header">Profil de {{ user[2] }}</h5>
+                <div class="card-body">
+                    <p class="card-text">Nom complet: {{ user[1] }}</p>
+                    <p class="card-text">Nom d'utilisateur: {{ user[2] }}</p>
+                    <p class="card-text">Email: {{ user[4] }}</p>
+                    <p class="card-text">Status: {{ user[5] }}</p>
+                </div>
+            </div>
+
+            <h3 class="mt-5">Réservations</h3>
+            {% if reservations %}
+            <ul class="list-group">
+                {% for reservation in reservations %}
+                <li class="list-group-item">
+                    Réservation ID: {{ reservation[0] }}, Nom: {{ reservation[1] }}, Place: {{ reservation[2] }}, Status: {{ reservation[3] }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Aucune réservation trouvée.</p>
+            {% endif %}
+            <a href="{{ url_for('logout') }}" class="btn btn-primary mt-3">Déconnexion</a>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 {% endblock %}
