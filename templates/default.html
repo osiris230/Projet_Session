@@ -42,17 +42,7 @@
                           </ul>
                         </li>
                         {% endif %}
-                        {% if session %}
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="{{url_for('departments')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Departments
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{url_for('departments')}}">Departments</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('add_departments')}}">Add a department</a></li>
-                          </ul>
-                        </li>
-                        {% endif %}
+                        
                         <li class="nav-item">
                           <a class="nav-link active" aria-current="page" href="{{url_for('login')}}">Login</a>
                       </li>

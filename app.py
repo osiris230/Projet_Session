@@ -52,6 +52,7 @@ def login():
                 if bcrypt.check_password_hash(user[3], password):
                     session['username'] = user[2]
                     session['nom_complet'] = user[1]
+                    session['user'] = user
                     return redirect(url_for('home'))
                 else:
                     message = 'Nom d\'user ou mot de passe incorrect.'
@@ -76,15 +77,21 @@ def events():
     return render_template("events.html", events=events)
 
 @app.route("/profil")
-def profile():
+def profil():
+    user = session['user']
+    nom_complet = user[1]
+    
+    message, reservations = ReservationDao.filtrer_reservations_par_personne(nom_complet)
+    print("reservations",reservations)
     if 'username' in session:
         username = session['username']
-        user = UserDao.get_by_username(username)
+        
         if user:
             nom_complet = user[1]  
-            message, reservations = ReservationDao.filtrer_reservations_par_personne(nom_complet)
+            #message, reservations = ReservationDao.filtrer_reservations_par_personne(nom_complet)
+            print(message,reservations)
             if message == "Success":
-                return render_template('profile.html', user=user, reservations=reservations)
+                return render_template('profil.html',message=message, user=user, reservations=reservations)
             else:
                 return "Erreur lors de la récupération des réservations", 500
         else:

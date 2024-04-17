@@ -13,3 +13,6 @@
 #rsv = Reservation("Michel","1","annulé")
 #message = ReservationDao.annuler_reservation(rsv,1)
 #print(message)
+
+#rsv = ReservationDao.filtrer_reservations_par_personne("michel")
+#print(rsv)
