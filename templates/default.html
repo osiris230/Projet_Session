@@ -38,39 +38,49 @@
                   <ul class="navbar-nav">
                       
 
-                      {% if session %}
-                      <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="{{url_for('login')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Connexion
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{url_for('login')}}">Se connecter</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('register')}}">S'inscrire</a></li>
-                          </ul>
-                        </li>
-                        {% endif %}
-                        {% if session %}
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="{{url_for('departments')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Departments
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{url_for('departments')}}">Departments</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('add_departments')}}">Add a department</a></li>
-                          </ul>
-                        </li>
-                        {% endif %}
-                        <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="{{url_for('login')}}">Login</a>
-                      </li>
-                      {% if session %}  
-                      <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="{{url_for('logout')}}">Logout</a>
-                      </li>
-                      {% endif %}
-                  </ul>
-              </div>
-          </div>
+            <!-- Premier bouton nav bar -->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Acceuil</a>
+            </li>
+            
+            
+            <!-- Deuxieme bouton nav bar -->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('events')}}">Événements</a>
+            </li>
+            
+                    
+ 
+
+            <!-- Quatrieme bouton nav bar -->  
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="{{url_for('login')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Connexion
+              </a>
+
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{url_for('login')}}">Se connecter</a></li>
+                <li><a class="dropdown-item" href="{{url_for('register')}}">S'inscrire</a></li>
+              </ul>
+            </li>
+                        
+            <!-- Cinquieme bouton nav bar -->
+            {% if session %}  
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('profil')}}">Profil</a>
+              </li>
+            {% endif %}
+
+            <!-- Sixieme bouton nav bar -->
+            {% if session %}  
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('logout')}}">Logout</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
           
     </nav>
 
