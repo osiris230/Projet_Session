@@ -3564,6 +3564,9 @@ input, select, textarea {
 /* Banner */
 
 	#banner {
+		background-image: url('https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg');
+	    background-position: center;
+		background-size: contain;
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -3583,6 +3586,11 @@ input, select, textarea {
 		position: relative;
 		text-align: center;
 	}
+
+		div1 {
+
+			background-color:rgba(0, 0, 0, 0.4) ;
+		}
 
 		#banner h2 {
 			-moz-transform: scale(1);
