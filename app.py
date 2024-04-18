@@ -123,3 +123,4 @@ def afficher_reservations():
     reservations, message = ReservationDao.afficher_places_reservees()
     return render_template('liste_reservations.html',reservations=reservations, message=message)
 
+
