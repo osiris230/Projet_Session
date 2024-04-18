@@ -77,6 +77,11 @@ def events():
     events = EventDao.lister_evenements()
     return render_template("events.html", events=events)
 
+@app.route("/admin/events/", methods=['GET', 'POST'])
+def admin_events():
+    events = EventDao.lister_evenements()
+    return render_template('event_admin.html', events=events)
+
 @app.route("/profil")
 def profil():
     user = session['user']

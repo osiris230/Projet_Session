@@ -1,0 +1,73 @@
+{% extends 'default2.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Gestion des Événements</h2>
+    <h1>Liste des événements</h1>
+
+<table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Date</th>
+        <th scope="col">Emplacement</th>
+        <th scope="col">Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr>
+            <td>{{ event[0] }}</td>
+            <td>{{ event[1] }}</td>
+            <td>{{ event[2] }}</td>
+            <td>{{ event[3] }}</td>
+            <td>{{ event[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    <!-- Formulaire pour ajouter un événement -->
+    <form method="post" action="{{ url_for('admin_events') }}">
+        <input type="hidden" name="action" value="add">
+        <input type="text" name="nom" placeholder="Nom de l'événement" required>
+        <input type="text" name="date" placeholder="Date de l'événement" required>
+        <input type="text" name="emplacement" placeholder="Emplacement" required>
+        <input type="number" name="prix" placeholder="Prix" required>
+        <button type="submit" class="btn btn-success">Ajouter Événement</button>
+    </form>
+
+    <!-- Bouton pour modifier un événement -->
+    <!-- Supposons que vous ayez une liste ou une sélection d'événements disponibles -->
+    <form method="post" action="{{ url_for('admin_events') }}">
+        <input type="hidden" name="action" value="edit">
+        <select name="event_id">
+            {% for event in events %}
+            <option value="{{ event.id }}">{{ event.nom }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="nom" placeholder="Nom de l'événement" required>
+        <input type="text" name="date" placeholder="Date de l'événement" required>
+        <input type="text" name="emplacement" placeholder="Emplacement" required>
+        <input type="number" name="prix" placeholder="Prix" required>
+        <button type="submit" class="btn btn-primary">Modifier Événement</button>
+    </form>
+
+    <!-- Bouton pour annuler un événement -->
+    <form method="post" action="{{ url_for('admin_events') }}">
+        <input type="hidden" name="action" value="cancel">
+        <select name="event_id">
+            {% for event in events %}
+            <option value="{{ event.id }}">{{ event.nom }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="nom" placeholder="Nom de l'événement" required>
+        <input type="text" name="date" placeholder="Date de l'événement" required>
+        <input type="text" name="emplacement" placeholder="Emplacement" required>
+        <input type="number" name="prix" placeholder="Prix" required>
+        <button type="submit" class="btn btn-danger">Annuler Événement</button>
+    </form>
+</div>
+{% endblock %}
