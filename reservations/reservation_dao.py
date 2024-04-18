@@ -24,15 +24,15 @@ class ReservationDao:
     
     @classmethod
     def afficher_places_reservees(cls):
-        sql = "SELECT place FROM reservations"
+        sql = "SELECT * FROM reservations"
         try:
             ReservationDao.cursor.execute(sql)
             reservations = ReservationDao.cursor.fetchall()
-            ReservationDao.cursor.close()
             message = "Success"
         except Exception as ex:
+            reservations = []
             message = f"Erreur lors de la récupération des réservations: {ex}"
-        return  message, reservations
+        return  reservations, message
     
     @classmethod
     def nombre_places_disponibles(cls):

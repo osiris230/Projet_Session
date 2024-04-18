@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h1>Veuillez remplir ce formulaire pour réserver votre événement.</h1>
+<h1>Veuillez remplir ce formulaire pour réserver votre place.</h1>
 <div class="container">
     {% if message=='error'%}
     <p class="alert alert-danger" role="alert">Tous les champs sont obligatoires !</p>
@@ -16,26 +16,16 @@
 </div>
 
 
-    <form action="{{url_for('reservation')}}" method="POST">
+    <form action="{{url_for('creer_reservation')}}" method="POST">
         
         <div class="form-floating mb-3">
-            <input  name="nom_complet" type="text" class="form-control" id="nom_complet" >
-            <label for="nom_complet">Nom complet</label>
+            <input  name="nom" type="text" class="form-control" id="nom" >
+            <label for="nom">Nom complet</label>
         </div>
         
         <div class="form-floating mb-3">
-            <input  name="username" type="text" class="form-control" id="username" >
-            <label for="username">Utilisateur</label>
-        </div>
-        
-        <div class="form-floating mb-3">
-            <input  name="password" type="text" class="form-control" id="password" >
-            <label for="password">Mot de passe</label>
-        </div>
-        
-        <div class="form-floating mb-3">
-            <input  name="email" type="text" class="form-control" id="email" >
-            <label for="email">Courriel</label>
+            <input  name="place" type="text" class="form-control" id="place" >
+            <label for="place">Utilisateur</label>
         </div>
         
         <div class="form-floating mb-3">

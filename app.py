@@ -101,4 +101,24 @@ def profil():
 def about():
     return render_template("about.html")
 
+@app.route('/reservation', methods=['GET', 'POST'])
+def creer_reservation():
+    if request.method == 'POST':
+        nom = request.form['nom']
+        place = request.form['place']
+        status = request.form['status']
+        nouvelle_reservation = Reservation(nom, place, status)
+        message = ReservationDao.reserver_place(nouvelle_reservation)
 
+        if "Success" in message:
+            return redirect(url_for('afficher_reservations'))
+        else:
+            return render_template('reservation.html', message=message)
+    else:
+        # Affiche le formulaire de création de la réservation
+        return render_template('reservation.html')
+
+@app.route('/reservations')
+def afficher_reservations():
+    reservations, message = ReservationDao.afficher_places_reservees()
+    return render_template('liste_reservations.html',reservations=reservations, message=message)
