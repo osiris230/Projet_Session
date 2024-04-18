@@ -79,6 +79,33 @@ def events():
 
 @app.route("/admin/events/", methods=['GET', 'POST'])
 def admin_events():
+    if request.method == 'POST':
+        action = request.form.get('action')
+
+        if action == 'add':
+            
+            nom = request.form['nom']
+            date = request.form['date']
+            emplacement = request.form['emplacement']
+            prix = request.form['prix']
+            EventDao.ajouter_evenement(Event(nom, date, emplacement, prix))
+
+        elif action == 'edit':
+            
+            nom = request.form['nom']
+            date = request.form['date']
+            emplacement = request.form['emplacement']
+            prix = request.form['prix']
+            event_id = request.form['event_id']
+            evt = Event(nom, date, emplacement, prix)
+            message = EventDao.modifier_evenement(event_id, evt)
+ 
+        elif action == 'cancel':
+            
+            event_id = request.form['event_id']
+            EventDao.supprimer_evenement(event_id)
+        return redirect(url_for('admin_events'))
+
     events = EventDao.lister_evenements()
     return render_template('event_admin.html', events=events)
 
@@ -122,7 +149,6 @@ def creer_reservation():
         else:
             return render_template('reservation.html', message=message)
     else:
-        # Affiche le formulaire de création de la réservation
         return render_template('reservation.html')
 
 @app.route('/reservations')

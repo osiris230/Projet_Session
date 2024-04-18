@@ -25,17 +25,18 @@
 										<ul>
 											<li><a href="{{url_for('home')}}">Acceuil</a></li>
 											<li><a href="{{url_for('events')}}">Événements</a></li>
-											<li><a href="{{url_for('profil')}}">Profil</a></li>
 											<li><a href="{{url_for('about')}}">À propos</a></li>
 											<li><a href="{{url_for('login')}}">Connexion</a></li>
 											<li><a href="{{url_for('logout')}}">Déconnexion</a></li>
 											<li><a href="{{url_for('register')}}">S'enregistrer</a></li>
 											<li><a href="{{url_for('creer_reservation')}}">Faire un réservation</a></li>
 											<li><a href="{{url_for('afficher_reservations')}}">Voir les places réservées</a></li>
+											{% if session %}
                       						<li><a href="{{url_for('profil')}}">Profil</a></li>
-											  {% if session['status'] == 'admin' %}
-											  <li><a href="{{ url_for('admin_events') }}">Administration Évennement</a></li>
-											  {% endif %}
+											{% endif %}
+											{% if session['status'] == 'admin' %}
+											<li><a href="{{ url_for('admin_events') }}">Administration Évennement</a></li>
+											{% endif %}
 										</ul>
 
 										<audio controls loop>
