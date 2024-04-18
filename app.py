@@ -107,7 +107,8 @@ def creer_reservation():
         nom = request.form['nom']
         place = request.form['place']
         status = request.form['status']
-        nouvelle_reservation = Reservation(nom, place, status)
+        event = request.form['event']
+        nouvelle_reservation = Reservation(nom, place, status, event)
         message = ReservationDao.reserver_place(nouvelle_reservation)
 
         if "Success" in message:

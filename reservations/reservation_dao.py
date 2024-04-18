@@ -11,8 +11,8 @@ class ReservationDao:
 
     @classmethod
     def reserver_place(cls, rsv:Reservation): 
-            sql = "INSERT INTO reservations (nom, place, status) VALUES (%s, %s, %s)"
-            params = (rsv.nom, rsv.place, rsv.status)
+            sql = "INSERT INTO reservations (nom, place, status, event) VALUES (%s, %s, %s, %s)"
+            params = (rsv.nom, rsv.place, rsv.status, rsv.event)
             try:
                 ReservationDao.connexion.cursor()
                 ReservationDao.cursor.execute(sql, params)
@@ -63,8 +63,8 @@ class ReservationDao:
     
     @classmethod
     def annuler_reservation(cls,rsv:Reservation,rsv_id):
-        sql = "UPDATE reservations SET nom=%s, place=%s, status=%s WHERE id=%s"
-        params = (rsv.nom, rsv.place, rsv.status, rsv_id)
+        sql = "UPDATE reservations SET nom=%s, place=%s, status=%s, event=%s WHERE id=%s"
+        params = (rsv.nom, rsv.place, rsv.status, rsv.event, rsv_id)
         try:
             ReservationDao.connexion.cursor()
             ReservationDao.cursor.execute(sql, params)
