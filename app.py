@@ -52,6 +52,7 @@ def login():
                 if bcrypt.check_password_hash(user[3], password):
                     session['username'] = user[2]
                     session['nom_complet'] = user[1]
+                    session['status'] = user[5]
                     session['user'] = user
                     return redirect(url_for('home'))
                 else:
