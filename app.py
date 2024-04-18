@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, session, redirect
 from flask_bcrypt import Bcrypt
+from flask import flash
 
 from events.event import Event
 from events.event_dao import EventDao
@@ -77,10 +78,11 @@ def events():
     events = EventDao.lister_evenements()
     return render_template("events.html", events=events)
 
-@app.route("/admin/events/", methods=['GET', 'POST'])
+@app.route("/admin/events", methods=['GET', 'POST'])
 def admin_events():
     if request.method == 'POST':
         action = request.form.get('action')
+        event_id = request.form.get('event_id')
 
         if action == 'add':
             
@@ -89,7 +91,7 @@ def admin_events():
             emplacement = request.form['emplacement']
             prix = request.form['prix']
             EventDao.ajouter_evenement(Event(nom, date, emplacement, prix))
-
+            pass
         elif action == 'edit':
             
             nom = request.form['nom']
@@ -98,16 +100,75 @@ def admin_events():
             prix = request.form['prix']
             event_id = request.form['event_id']
             evt = Event(nom, date, emplacement, prix)
-            message = EventDao.modifier_evenement(event_id, evt)
- 
+            EventDao.modifier_evenement(event_id, evt)
+            pass
         elif action == 'cancel':
             
             event_id = request.form['event_id']
             EventDao.supprimer_evenement(event_id)
+            pass
         return redirect(url_for('admin_events'))
 
     events = EventDao.lister_evenements()
     return render_template('event_admin.html', events=events)
+
+@app.route("/admin/users", methods=['GET', 'POST'])
+def admin_users():
+    action = request.form.get('action')
+    user_id = request.form.get('user_id')
+    if request.method == 'POST':
+        
+        if action == 'add':
+            nom_complet = request.form['nom_complet']
+            username = request.form['username']
+            password = request.form['password']
+            email = request.form['email']
+            status = request.form['status']
+            usr = User(nom_complet, username, password, email, status)
+            UserDao.create(usr)
+
+        elif action == 'edit':
+            new_status = request.form.get('status')
+            if user_id and new_status:
+                UserDao.edit_user_status(user_id , new_status)
+                return redirect(url_for('admin_users'))
+            else:
+                return "error"
+            
+
+        elif action == 'delete':
+            user_id = request.form['user_id']
+            UserDao.delete_user(user_id)
+
+    users = UserDao.list_all()
+    return render_template('user_admin.html', users=users)
+
+@app.route('/admin/reservations', methods=['GET', 'POST'])
+def admin_reservations():
+    if request.method == 'POST':
+        action = request.form.get('action')
+        reservation_id = request.form.get('reservation_id', type=int)
+
+        if action == 'update_status':
+            new_status = request.form.get('status')
+            message = ReservationDao.annuler_reservation(new_status, reservation_id)
+            flash(message)
+            return redirect(url_for('admin_reservations'))
+        elif action == 'delete':
+            message = ReservationDao.supprimer_reservation(reservation_id)
+            flash(message)
+    
+    # Afficher toutes les réservations
+    reservations, message_reservations = ReservationDao.afficher_places_reservees()
+    if message_reservations != "Success":
+        flash(message_reservations)  
+    
+    # Calculer les places disponibles
+    message_disponibles, places_disponibles = ReservationDao.nombre_places_disponibles()
+    if message_disponibles != "Success":
+        flash(message_disponibles)
+    
+    return render_template('reservations_admin.html', reservations=reservations, places_disponibles=places_disponibles)
 
 @app.route("/profil")
 def profil():

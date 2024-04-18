@@ -36,7 +36,7 @@ class ReservationDao:
     
     @classmethod
     def nombre_places_disponibles(cls):
-        capacite_totale = 200
+        capacite_totale = 10000
         sql = "SELECT COUNT(*) FROM reservations"
         try:
             ReservationDao.cursor.execute(sql)
@@ -62,15 +62,34 @@ class ReservationDao:
         return  message, reservations
     
     @classmethod
-    def annuler_reservation(cls,rsv:Reservation,rsv_id):
-        sql = "UPDATE reservations SET nom=%s, place=%s, status=%s, event=%s WHERE id=%s"
-        params = (rsv.nom, rsv.place, rsv.status, rsv.event, rsv_id)
+    def annuler_reservation(cls,new_status, rsv_id):
+        sql = "UPDATE reservations SET status=%s WHERE id=%s"
+        params = (new_status, rsv_id)
         try:
-            ReservationDao.connexion.cursor()
-            ReservationDao.cursor.execute(sql, params)
-            ReservationDao.connexion.commit()
-            
-            message = "Success"
+            cls.connexion.cursor()
+            cls.cursor.execute(sql, params)
+            cls.connexion.commit()
+            return "Statut mis à jour avec succès"
         except Exception as ex:
-            message = "Error"
-        return message
+            return f"Erreur lors de la mise à jour du statut: {ex}"
+    
+    @classmethod
+    def find_by_id(cls, reservation_id):
+        sql = "SELECT * FROM reservations WHERE id = %s"
+        try:
+            ReservationDao.cursor.execute(sql, (reservation_id,))
+            reservation = ReservationDao.cursor.fetchone()
+            return reservation 
+        except Exception as ex:
+            print(f"Erreur lors de la recherche de la réservation: {ex}")
+            return None
+        
+    @classmethod
+    def supprimer_reservation(cls, rsv_id):
+        sql = "DELETE FROM reservations WHERE id=%s"
+        try:
+            cls.cursor.execute(sql, (rsv_id,))
+            cls.connexion.commit()
+            return "Réservation supprimée avec succès"
+        except Exception as ex:
+            return f"Erreur lors de la suppression de la réservation: {ex}"

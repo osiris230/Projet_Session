@@ -1,0 +1,65 @@
+{% extends 'default2.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Gestion des Utilisateurs</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom Complet</th>
+                <th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+                <td>{{ user[2] }}</td>
+                <td>{{ user[4] }}</td>
+                <td>{{ user[5] }}</td>
+                <td>
+                    
+                    <form method="post" action="{{ url_for('admin_users') }}" style="display: inline;">
+                        <input type="hidden" name="user_id" value="{{ user[0] }}">
+                        <input type="hidden" name="action" value="edit">
+                        <select name="status">
+                            <option value="client" {% if user[5] == "client" %} selected {% endif %}>Client</option>
+                            <option value="admin" {% if user[5] == "admin" %} selected {% endif %}>Admin</option>
+                        </select>
+                        <button type="submit">Modifier</button>
+                    </form>
+                    
+                    <form method="post" action="{{ url_for('admin_users') }}" style="display: inline;">
+                        <input type="hidden" name="user_id" value="{{ user[0] }}">
+                        <input type="hidden" name="action" value="delete">
+                        <button type="submit">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Ajouter un utilisateur</h3>
+    <form method="post" action="{{ url_for('admin_users') }}">
+        <input type="hidden" name="action" value="add">
+        <input type="text" name="nom_complet" placeholder="Nom complet" required>
+        <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <select name="status">
+            <option value="client">Client</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button type="submit">Ajouter</button>
+    </form>
+</div>
+
+{% endblock %}

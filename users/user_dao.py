@@ -58,3 +58,29 @@ class UserDao:
             message = "Error"
             user = []
         return (message, user)
+    
+    @classmethod
+    def edit_user_status(cls, user_id,  new_status):
+        sql = "UPDATE users SET status=%s WHERE id=%s"
+        
+        try:
+            UserDao.connexion.cursor()
+            UserDao.cursor.execute(sql, (new_status, user_id))
+            UserDao.connexion.commit()
+            message =  "Success"
+        except Exception as ex:
+            UserDao.connexion.rollback()
+            message =  "Error"
+        return message
+    
+    def delete_user(user_id):
+        sql = "DELETE FROM users WHERE id = %s"
+        try:
+            UserDao.connexion.cursor()
+            UserDao.cursor.execute(sql, (user_id,))
+            UserDao.connexion.commit()
+            message = "Success"
+        except Exception as ex:
+            UserDao.connexion.rollback()
+            message = "Error"
+        return message
