@@ -1,0 +1,36 @@
+{% extends 'default.html' %}
+
+{% block title %} Paiement {% endblock %}
+
+{% block content %}
+
+<h1>Procéder au paiement ici</h1>
+
+<form action="{{url_for('soumission_paiement')}}" method="POST">
+        
+    <div class="form-floating mb-3">
+        <input  name="nom_complet" type="text" class="form-control" id="nom_complet" >
+        <label for="nom_complet">Nom complet</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+        <input  name="telephone" type="text" class="form-control" id="telephone" >
+        <label for="telephone">Numéro de téléphone</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+        <input  name="email" type="text" class="form-control" id="email" >
+        <label for="email">Adresse mail</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input  name="carte_credit" type="text" class="form-control" id="carte_credit"  >
+        <label for="carte_credit">Numéro de carte de crédit</label>
+    </div>
+    
+    <div class ="form-floating mb-3">
+        <button type="submit" class="btn btn-primary">Payer</button>
+    </div>
+    
+
+{% endblock %}

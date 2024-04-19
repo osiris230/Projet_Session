@@ -8,6 +8,8 @@ from reservations.reservation import Reservation
 from reservations.reservation_dao import ReservationDao
 from users.user import User
 from users.user_dao import UserDao
+from paiements.paiement import Paiement
+from paiements.paiement_dao import PaiementDao
 
 app = Flask(__name__)
 app.secret_key='secretkey'
@@ -197,6 +199,11 @@ def about():
 
 @app.route('/reservation', methods=['GET', 'POST'])
 def creer_reservation():
+    events = EventDao.lister_evenements()
+    message_disponibles, places_disponibles = ReservationDao.nombre_places_disponibles()
+    if message_disponibles != "Success":
+        flash(message_disponibles)
+    
     if request.method == 'POST':
         nom = request.form['nom']
         place = request.form['place']
@@ -210,11 +217,30 @@ def creer_reservation():
         else:
             return render_template('reservation.html', message=message)
     else:
-        return render_template('reservation.html')
+        return render_template('reservation.html', events=events, places_disponibles=places_disponibles)
 
 @app.route('/reservations')
 def afficher_reservations():
     reservations, message = ReservationDao.afficher_places_reservees()
     return render_template('liste_reservations.html',reservations=reservations, message=message)
 
+@app.route('/paiement', methods=['POST','GET'])
+def soumission_paiement():
+    paiement=None
+    message = None
+    if request.method == "POST":
+   
+        nom_complet = request.form['nom_complet']
+        telephone = request.form['telephone']
+        email = request.form['email']
+        carte_credit = request.form['carte_credit']
+        pmts= Paiement(nom_complet,telephone,email,carte_credit)
+        message = PaiementDao.add_payment(pmts)
+        if "Success" in message:
+            return redirect(url_for('merci'))
+        
+    return render_template("paiement.html", paiement=paiement)
 
+@app.route('/merci')
+def merci():
+    return render_template("merci.html")

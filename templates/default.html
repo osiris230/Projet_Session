@@ -26,8 +26,12 @@
 											<li><a href="{{url_for('home')}}">Acceuil</a></li>
 											<li><a href="{{url_for('events')}}">Événements</a></li>
 											<li><a href="{{url_for('about')}}">À propos</a></li>
+											{% if not session %}
 											<li><a href="{{url_for('login')}}">Connexion</a></li>
+											{% endif %}
+											{% if session %}
 											<li><a href="{{url_for('logout')}}">Déconnexion</a></li>
+											{% endif %}
 											<li><a href="{{url_for('register')}}">S'enregistrer</a></li>
 											<li><a href="{{url_for('creer_reservation')}}">Faire un réservation</a></li>
 											<li><a href="{{url_for('afficher_reservations')}}">Voir les places réservées</a></li>
