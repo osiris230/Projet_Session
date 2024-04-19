@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 19 avr. 2024 à 01:10
+-- Généré le : sam. 20 avr. 2024 à 01:15
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -48,6 +48,28 @@ INSERT INTO `events` (`id`, `nom`, `date`, `emplacement`, `prix`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `paiement`
+--
+
+CREATE TABLE `paiement` (
+  `id` int(30) NOT NULL,
+  `nom_complet` varchar(30) NOT NULL,
+  `telephone` varchar(16) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `carte_credit` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `paiement`
+--
+
+INSERT INTO `paiement` (`id`, `nom_complet`, `telephone`, `email`, `carte_credit`) VALUES
+(1, 'Michel ', '819-155-5252', 'michel@hotmail.com', '1234 1234 1234 1234'),
+(4, 'John Doe', '514-622-5356', 'JD123@hotmail.com', '4321 4321 4321 4321');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `reservations`
 --
 
@@ -64,7 +86,8 @@ CREATE TABLE `reservations` (
 --
 
 INSERT INTO `reservations` (`id`, `nom`, `place`, `status`, `event`) VALUES
-(1, 'Michel', 1, 'confirmé', 'Johnny Rupy');
+(1, 'Michel', 1, 'confirmé', 'Johnny Rupy'),
+(5, 'John Doe', 10, 'en-attente', 'Festival d\'été de Québec');
 
 -- --------------------------------------------------------
 
@@ -102,6 +125,13 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `paiement`
+--
+ALTER TABLE `paiement`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `carte_credit` (`carte_credit`);
+
+--
 -- Index pour la table `reservations`
 --
 ALTER TABLE `reservations`
@@ -125,10 +155,16 @@ ALTER TABLE `events`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT pour la table `paiement`
+--
+ALTER TABLE `paiement`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `users`
