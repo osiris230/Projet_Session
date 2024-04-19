@@ -37,7 +37,7 @@ def register():
                 
             user = User(nom_complet,username,hashed_password,email,status)
             message = UserDao.create(user)
-    return render_template('register.html', message=message,user=user)
+    return render_template('user/register.html', message=message,user=user)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -64,12 +64,12 @@ def login():
                 message = 'Nom d\'user ou mot de passe incorrect.'
         print(message)
             
-    return render_template("login.html",message=message,user=user)
+    return render_template("user/login.html",message=message,user=user)
 
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect(url_for('login'))
+    return redirect(url_for('user/login'))
 
 @app.route("/player")
 def player():
@@ -112,7 +112,7 @@ def admin_events():
         return redirect(url_for('admin_events'))
 
     events = EventDao.lister_evenements()
-    return render_template('event_admin.html', events=events)
+    return render_template('admin/event_admin.html', events=events)
 
 @app.route("/admin/users", methods=['GET', 'POST'])
 def admin_users():
@@ -143,7 +143,7 @@ def admin_users():
             UserDao.delete_user(user_id)
 
     users = UserDao.list_all()
-    return render_template('user_admin.html', users=users)
+    return render_template('admin/user_admin.html', users=users)
 
 @app.route('/admin/reservations', methods=['GET', 'POST'])
 def admin_reservations():
@@ -170,7 +170,7 @@ def admin_reservations():
     if message_disponibles != "Success":
         flash(message_disponibles)
     
-    return render_template('reservations_admin.html', reservations=reservations, places_disponibles=places_disponibles)
+    return render_template('admin/reservations_admin.html', reservations=reservations, places_disponibles=places_disponibles)
 
 @app.route("/profil")
 def profil():
@@ -186,7 +186,7 @@ def profil():
             
             print(message,reservations)
             if message == "Success":
-                return render_template('profil.html',message=message, user=user, reservations=reservations)
+                return render_template('user/profil.html',message=message, user=user, reservations=reservations)
             else:
                 return "Erreur lors de la récupération des réservations", 500
         else:
@@ -215,14 +215,14 @@ def creer_reservation():
         if "Success" in message:
             return redirect(url_for('afficher_reservations'))
         else:
-            return render_template('reservation.html', message=message)
+            return render_template('reservation/reservation.html', message=message)
     else:
-        return render_template('reservation.html', events=events, places_disponibles=places_disponibles)
+        return render_template('reservation/reservation.html', events=events, places_disponibles=places_disponibles)
 
 @app.route('/reservations')
 def afficher_reservations():
     reservations, message = ReservationDao.afficher_places_reservees()
-    return render_template('liste_reservations.html',reservations=reservations, message=message)
+    return render_template('reservation/liste_reservations.html',reservations=reservations, message=message)
 
 @app.route('/paiement', methods=['POST','GET'])
 def soumission_paiement():
@@ -239,8 +239,8 @@ def soumission_paiement():
         if "Success" in message:
             return redirect(url_for('merci'))
         
-    return render_template("paiement.html", paiement=paiement)
+    return render_template("paiement/paiement.html", paiement=paiement)
 
 @app.route('/merci')
 def merci():
-    return render_template("merci.html")
+    return render_template("paiement/merci.html")
