@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 13 avr. 2024 à 00:30
+-- Généré le : ven. 19 avr. 2024 à 01:10
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -28,25 +28,43 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `events` (
-  `id` date NOT NULL,
+  `id` int(100) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `date` date NOT NULL,
   `emplacement` varchar(30) NOT NULL,
   `prix` int(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `events`
+--
+
+INSERT INTO `events` (`id`, `nom`, `date`, `emplacement`, `prix`) VALUES
+(3, 'Johnny McMax', '2024-05-05', 'Stade Pepis', 130),
+(5, 'Magic Michel', '2024-06-20', 'Grand Théâtre de Québec', 100),
+(6, 'Steven Bibeurre', '2024-08-10', 'Le Centre Videotron', 200),
+(7, 'Festival d\'été de Québec', '2024-07-04', 'Plaines d\'Abraham', 150);
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `reservation`
+-- Structure de la table `reservations`
 --
 
-CREATE TABLE `reservation` (
+CREATE TABLE `reservations` (
   `id` int(200) NOT NULL,
   `nom` varchar(70) NOT NULL,
   `place` int(3) NOT NULL,
-  `status` varchar(20) NOT NULL
+  `status` varchar(20) NOT NULL,
+  `event` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `reservations`
+--
+
+INSERT INTO `reservations` (`id`, `nom`, `place`, `status`, `event`) VALUES
+(1, 'Michel', 1, 'confirmé', 'Johnny Rupy');
 
 -- --------------------------------------------------------
 
@@ -68,7 +86,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nom_complet`, `username`, `password`, `email`, `status`) VALUES
-(1, 'admin', 'admin', 'password', 'admin@email.com', 'admin');
+(3, 'Bon John Bovie', 'bjb', '123', 'jbj@email.com', 'admin'),
+(4, 'admin', 'admin', '$2b$12$UgB2HPyR8cztGOhjTiFrsuw9TlLqncZ/R.6sGWANuspEWwr40lVau', 'admin@ticketmain.com', 'admin'),
+(6, 'Michel ', 'michel', '$2b$12$.oV7VfRgB7RWurAapKVE6O8k5BXbd8aY1d8KNoNbXjnVz7knlgjK6', 'michel@hotmail.com', 'client'),
+(7, 'John Doe', 'JD123', '$2b$12$vOJf/LthgZ8AJEKIkja1BOfFEfOm2KlYW8/7aelN85SInK/DxHrvG', 'JD123@hotmail.com', 'client');
 
 --
 -- Index pour les tables déchargées
@@ -81,9 +102,9 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `reservation`
+-- Index pour la table `reservations`
 --
-ALTER TABLE `reservation`
+ALTER TABLE `reservations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -98,16 +119,22 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT pour la table `reservation`
+-- AUTO_INCREMENT pour la table `events`
 --
-ALTER TABLE `reservation`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `events`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT pour la table `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
