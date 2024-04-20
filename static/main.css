@@ -4005,3 +4005,18 @@ input, select, textarea {
 	body.is-mobile.landing #footer {
 		background-color: #1d242a;
 	}
+
+	.evenements {
+		display: flex;
+		flex-wrap: wrap;
+		max-width: 100%;
+		background-image: ;
+	  }
+	  
+	  .evenement {
+		width: calc(33.33% - 10px);
+		margin: 5px;
+		background-color: rgba(0, 0, 0, 0.55);
+		border: 1px solid rgba(0, 0, 0, 1);
+		padding: 10px;
+	  }

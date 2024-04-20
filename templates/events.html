@@ -4,30 +4,33 @@
 
 {% block content %}
   
-<h1>Liste des événements</h1>
-
-<table class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Date</th>
-        <th scope="col">Emplacement</th>
-        <th scope="col">Prix</th>
-      </tr>
-    </thead>
-    <tbody>
+<section class="background">
+    <div class="ticket-main">
+        Ticket main
+    </div>
+    <h1>Liste des événements</h1>
+    <div class="evenements">
         {% for event in events %}
-        <tr>
-            <td>{{ event[0] }}</td>
-            <td>{{ event[1] }}</td>
-            <td>{{ event[2] }}</td>
-            <td>{{ event[3] }}</td>
-            <td>{{ event[4] }}</td>
-        </tr>
+        <div class="evenement">
+            <a href="/reservation"> <!-- Anchor tag added here -->
+                {% if get_file_extension(event[5]) == 'mp4' %}
+                    <video width="100%" autoplay loop muted>
+                        <source src="{{ event[5] }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% else %}
+                    <span class="image fit">
+                        <img src="{{ event[5] }}" alt="{{ event[1] }}" />
+                    </span>
+                {% endif %}
+            </a> <!-- Closing anchor tag here -->
+            <h5>{{ event[1] }}</h5>
+            <p>{{ event[6] }}</p>
+        </div>
         {% endfor %}
-    </tbody>
-</table>
-<a href="{{ url_for('creer_reservation') }}" class="btn btn-primary">Réserver une place pour l'évennement souhaité.</a>
+    </div>
+</section>
+
+<!--<a href="{{ url_for('creer_reservation') }}" class="btn btn-primary">Réserver une place pour l'événement souhaité.</a>-->
 
 {% endblock %}

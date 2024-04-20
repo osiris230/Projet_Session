@@ -15,6 +15,10 @@ app = Flask(__name__)
 app.secret_key='secretkey'
 bcrypt = Bcrypt(app)
 
+def get_file_extension(filename):
+    return filename.split('.')[-1]
+
+
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -78,7 +82,7 @@ def player():
 @app.route("/events")
 def events():
     events = EventDao.lister_evenements()
-    return render_template("events.html", events=events)
+    return render_template('events.html', events=events, get_file_extension=get_file_extension)
 
 @app.route("/admin/events", methods=['GET', 'POST'])
 def admin_events():
@@ -244,3 +248,6 @@ def soumission_paiement():
 @app.route('/merci')
 def merci():
     return render_template("paiement/merci.html")
+
+if __name__ == '__main__':
+    app.run(debug=True)
