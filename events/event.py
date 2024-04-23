@@ -4,6 +4,8 @@ class Event:
         self.__date = date
         self.__emplacement = emplacement
         self.__prix = prix
+        self.__images = images
+        self.__description = description
 
     @property
     def nom(self):
