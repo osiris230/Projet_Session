@@ -220,6 +220,8 @@ def creer_reservation():
         event = request.form['event']
         nouvelle_reservation = Reservation(nom, place, status, event)
         message = ReservationDao.reserver_place(nouvelle_reservation)
+        if nom=="" or place=="" or status=="" or event=="":
+            message="error"
 
         if "Success" in message:
             return redirect(url_for('soumission_paiement'))
