@@ -1,130 +1,138 @@
-{% extends 'default.html' %} {% block title %} Acceuil {% endblock %} {% block content %}
+{% extends 'default.html' %} 
 
-<!-- Banner -->
-<section id="banner">
-    <div1 id="banner_testing" class="inner">
-        <h2>TicketMain</h2>
-        <p>Les meilleurs événements<br />
-            au meilleur prix,<br />
-            c'est avec nous que ça se passe !</p>
+{% set is_main_page = True %}
 
-        <!--<ul class="actions special">
-            <li><a href="events" class="button primary">Massive hard on</a></li>
-        </ul>-->
+{% block title %} 
+    Acceuil 
+{% endblock %}
+
+{% block content %}
+
+    <!-- Banner -->
+    <section id="banner">
+        <div1 id="banner_testing" class="inner">
+            <h2>TicketMain</h2>
+            <p>Les meilleurs événements<br />
+                au meilleur prix,<br />
+                c'est avec nous que ça se passe !</p>
+
+            <!--<ul class="actions special">
+                <li><a href="events" class="button primary">Massive hard on</a></li>
+            </ul>-->
+            
+            
+        </div1>
+        <a href="#spotlight" class="more scrolly">En voir plus</a>
+    </section>
+
+    <!-- One -->
+    <section id="one" class="wrapper style1 special">
+        <div class="inner">
+            <header class="major">
+                <h2>Découvrez une expérience unique avec notre toute nouvelle application !</h2>
+                <p>Téléchargez-la dès maintenant sur votre appareil préféré et accédez à une multitude d'événements passionnants, 
+                    de billets exclusifs et bien plus encore.<br />
+                    Ne manquez plus jamais une occasion de vivre des moments inoubliables.<br />
+                    Disponible dès maintenant sur l'App Store et Google Play Store !</p>
+            </header>
+            <ul class="icons major">
+                <li><span class="fa-brands fa-google-play"><span class="label"></span></span></li>
+                <li><span class="fa-brands fa-app-store-ios"><span class="label"></span></span></li>      
+            </ul>
+        </div>
+    </section>
+
+    <!-- Two -->
+        <section id="spotlight" class="spotlight">
+            <div class="video-container">
+                <video autoplay loop muted style="width: 100%; max-width: 950px;">
+                    <source src="static/images/feq.mp4" type="video/mp4">
+                    Votre navigateur ne prend pas en charge la lecture de vidéos.
+                </video>
+            </div>
+            <div class="content">
+                <h2> Festival d'été de Québec<br />
+                <h1>Du 4 au 14 Juillet</h1></h2>
+                <p>Le Festival d'été de Québec est le plus important événement musical en plein air au Canada, en plein cœur de la ville de Québec.<br />
+                    <br />La programmation de 2024 comprend : Nickelback, 50 Cent, Jonas Brothers, Post Malone, Zac Brown Band, The Offspring, Mötley Crüe et bien d'autres encore !<br />
+                    <br />Le Festival d'été de Québec, c'est aussi des rues et des terrasses bondées de festivaliers heureux, des performances surprises à travers la ville, 
+                    une programmation dédiée aux familles et la découverte d'artistes émergents.</p>
+            </div>
+        </section>
+
         
-        
-    </div1>
-    <a href="#spotlight" class="more scrolly">En voir plus</a>
-</section>
-
-<!-- One -->
-<section id="one" class="wrapper style1 special">
-    <div class="inner">
-        <header class="major">
-            <h2>Découvrez une expérience unique avec notre toute nouvelle application !</h2>
-            <p>Téléchargez-la dès maintenant sur votre appareil préféré et accédez à une multitude d'événements passionnants, 
-                de billets exclusifs et bien plus encore.<br />
-                Ne manquez plus jamais une occasion de vivre des moments inoubliables.<br />
-                Disponible dès maintenant sur l'App Store et Google Play Store !</p>
-        </header>
-        <ul class="icons major">
-            <li><span class="fa-brands fa-google-play"><span class="label"></span></span></li>
-            <li><span class="fa-brands fa-app-store-ios"><span class="label"></span></span></li>      
-        </ul>
-    </div>
-</section>
-
-<!-- Two -->
-    <section id="spotlight" class="spotlight">
-        <div class="video-container">
-            <video autoplay loop muted controls style="width: 100%; max-width: 950px;">
-                <source src="static/images/feq.mp4" type="video/mp4">
-                Votre navigateur ne prend pas en charge la lecture de vidéos.
-            </video>
-        </div>
-        <div class="content">
-            <h2> Festival d'été de Québec<br />
-            <h1>Du 4 au 14 Juillet</h1></h2>
-            <p>Le Festival d'été de Québec est le plus important événement musical en plein air au Canada, en plein cœur de la ville de Québec.<br />
-                <br />La programmation de 2024 comprend : Nickelback, 50 Cent, Jonas Brothers, Post Malone, Zac Brown Band, The Offspring, Mötley Crüe et bien d'autres encore !<br />
-                <br />Le Festival d'été de Québec, c'est aussi des rues et des terrasses bondées de festivaliers heureux, des performances surprises à travers la ville, 
-                une programmation dédiée aux familles et la découverte d'artistes émergents.</p>
-        </div>
-    </section>
-
-    
-    <section class="spotlight">
-        <div class="image"><img src="\static\images\MagicMichel.png" style="width: 100%; max-width: 950px;" class="d-block w-100" alt="On se calme mesdames"></div><div class="content">
-            <h2>Spotlight Événement 2<br />
-            date de l'événement</h2>
-            <p>Soyez émerveillés par la magie de Magic Michel!!! Ce prestidigitateur de Matane fera disparaître votre ennui...et votre argent.</p>
-        </div>
-    </section>
-    <section class="spotlight">
-        <div class="image"><img src="\static\images\bibeurre.jpg" alt="" /></div><div class="content">
-            <h2>Spotlight Événement 3<br />
+        <section class="spotlight">
+            <div class="image"><img src="\static\images\MagicMichel.png" style="width: 100%; max-width: 950px;" class="d-block w-100" alt="On se calme mesdames"></div><div class="content">
+                <h2>Spotlight Événement 2<br />
                 date de l'événement</h2>
-            <p>Steven Bibeurre présentera sa nouvelle chanson "Awww Baby Baby Baby Awww", "Fragile Lover" et "I need a safe space".</p>
+                <p>Soyez émerveillés par la magie de Magic Michel!!! Ce prestidigitateur de Matane fera disparaître votre ennui...et votre argent.</p>
+            </div>
+        </section>
+        <section class="spotlight">
+            <div class="image"><img src="\static\images\bibeurre.jpg" alt="" /></div><div class="content">
+                <h2>Spotlight Événement 3<br />
+                    date de l'événement</h2>
+                <p>Steven Bibeurre présentera sa nouvelle chanson "Awww Baby Baby Baby Awww", "Fragile Lover" et "I need a safe space".</p>
+            </div>
+        </section>
+        <section class="spotlight">
+            <div class="image"><img src="\static\images\Maxnboots.jpg" alt="" /></div><div class="content">
+                <h2>Spotlight Événement 3<br />
+                    date de l'événement</h2>
+                <p>The Stud is back in town...YEEEEEEEEHAAAAAA.</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- Three -->
+    <section id="three" class="wrapper style3 special">
+        <div class="inner">
+            <header class="major">
+                <h2>Présentation des événements secondaire</h2>
+                <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
+                fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
+            </header>
+            <ul class="features">
+                <li class="icon fa-paper-plane">
+                    <h3>Boîte numéro 1</h3>
+                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                </li>
+                <li class="icon solid fa-laptop">
+                    <h3>Boîte numéro 2</h3>
+                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                </li>
+                <li class="icon solid fa-code">
+                    <h3>Boîte numéro 3</h3>
+                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                </li>
+                <li class="icon solid fa-headphones-alt">
+                    <h3>Boîte numéro 4</h3>
+                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                </li>
+                <li class="icon fa-heart">
+                    <h3>Boîte numéro 5</h3>
+                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                </li>
+                <li class="icon fa-flag">
+                    <h3>Boîte numéro 6</h3>
+                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
+                </li>
+            </ul>
         </div>
     </section>
-    <section class="spotlight">
-        <div class="image"><img src="\static\images\Maxnboots.jpg" alt="" /></div><div class="content">
-            <h2>Spotlight Événement 3<br />
-                date de l'événement</h2>
-            <p>The Stud is back in town...YEEEEEEEEHAAAAAA.</p>
+
+    <!-- CTA -->
+    <section id="cta" class="wrapper style4">
+        <div class="inner">
+            <header>
+                <h2>Arcue ut vel commodo</h2>
+                <p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
+            </header>
+            <ul class="actions stacked">
+                <li><a href="{{url_for('login')}}" class="button fit primary">Connexion</a></li>
+                <li><a href="{{url_for('events')}}" class="button fit">Learn More</a></li>
+            </ul>
         </div>
     </section>
-</section>
-
-<!-- Three -->
-<section id="three" class="wrapper style3 special">
-    <div class="inner">
-        <header class="major">
-            <h2>Présentation des événements secondaire</h2>
-            <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-            fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
-        </header>
-        <ul class="features">
-            <li class="icon fa-paper-plane">
-                <h3>Boîte numéro 1</h3>
-                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-            </li>
-            <li class="icon solid fa-laptop">
-                <h3>Boîte numéro 2</h3>
-                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-            </li>
-            <li class="icon solid fa-code">
-                <h3>Boîte numéro 3</h3>
-                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-            </li>
-            <li class="icon solid fa-headphones-alt">
-                <h3>Boîte numéro 4</h3>
-                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-            </li>
-            <li class="icon fa-heart">
-                <h3>Boîte numéro 5</h3>
-                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-            </li>
-            <li class="icon fa-flag">
-                <h3>Boîte numéro 6</h3>
-                <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-            </li>
-        </ul>
-    </div>
-</section>
-
-<!-- CTA -->
-<section id="cta" class="wrapper style4">
-    <div class="inner">
-        <header>
-            <h2>Arcue ut vel commodo</h2>
-            <p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
-        </header>
-        <ul class="actions stacked">
-            <li><a href="{{url_for('login')}}" class="button fit primary">Connexion</a></li>
-            <li><a href="{{url_for('events')}}" class="button fit">Learn More</a></li>
-        </ul>
-    </div>
-</section>
 
 {% endblock %}
