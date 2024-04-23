@@ -3,67 +3,68 @@
 
 
 {% block content %}
-<h1></br></br></h1>
-<h1></br></br>Veuillez remplir ce formulaire pour réserver votre place.</h1>
-<div class="container">
-    {% if message=='error'%}
-    <p class="alert alert-danger" role="alert">Tous les champs sont obligatoires !</p>
-    {% elif message == 'Error'%}
-    <p class="alert alert-warning" role="warning">Erreur lors de l'ajout, si l'erreur persiste, veuillez contacter le support.</p>
-    {% elif message=='Success'%}
-    <p class="alert alert-success" role="success">Vos billets pour {{event.nom}} a {{event.date}} a été réserver avec succès !</p>
-    {%endif%}
-</div>
-<div>
-    <h4>Places disponibles : {{ places_disponibles }}</h4>
-</div>
-
-    <form action="{{url_for('creer_reservation')}}" method="POST">
-        
-        <div class="form-floating mb-3">
-            <input  name="nom" type="text" class="form-control" id="nom" >
-            <label for="nom">Nom complet</label>
+    <section class="background" style="margin-top: 55px; margin-left: auto; margin-right: auto; width: 80%;">
+        <h1 style="text-align: center;"></br></br>Veuillez remplir ce formulaire pour réserver votre place.</h1>
+        <div class="container">
+            {% if message=='error'%}
+            <p class="alert alert-danger" role="alert">Tous les champs sont obligatoires !</p>
+            {% elif message == 'Error'%}
+            <p class="alert alert-warning" role="warning">Erreur lors de l'ajout, si l'erreur persiste, veuillez contacter le support.</p>
+            {% elif message=='Success'%}
+            <p class="alert alert-success" role="success">Vos billets pour {{event.nom}} a {{event.date}} a été réserver avec succès !</p>
+            {%endif%}
         </div>
-        
-        <div class="form-floating mb-3">
-            <input  name="place" type="text" class="form-control" id="place" >
-            <label for="place">Place</label>
-        </div>
-        
-        <div class="form-floating mb-3">
-            <input  name="status" type="text" class="form-control" id="status" value="en-attente" readonly>
-            <label for="status">status</label>
+        <div>
+            <h4 style="text-align: center;">Places disponibles : {{ places_disponibles }}</h4>
         </div>
 
-        <div class="form-floating mb-3">
-            <input  name="event" type="text" class="form-control" id="event"  >
-            <label for="event">Nom de l'évennement</label>
-        </div>
-        
-        <div class ="form-floating mb-3">
-            <button type="submit" class="btn btn-primary">Ajouter</button>
-        </div>
-        <a href="{{ url_for('soumission_paiement') }}" class="btn btn-primary">Paiement</a>    
-    </form>
-<table class="table table-dark table-striped">
-    <thead>
-        <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Date</th>
-        <th scope="col">Emplacement</th>
-        <th scope="col">Prix</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for event in events %}
-        <tr>
-            <td>{{ event[1] }}</td>
-            <td>{{ event[2] }}</td>
-            <td>{{ event[3] }}</td>
-            <td>{{ event[4] }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>    
+            <form action="{{url_for('creer_reservation')}}" method="POST" style="margin-left: auto; margin-right: auto; width: 80%;">
+                
+                <div class="form-floating mb-3">
+                    <input  name="nom" type="text" class="form-control" id="nom" >
+                    <label for="nom">Nom complet</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input  name="place" type="text" class="form-control" id="place" >
+                    <label for="place">Place</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input  name="status" type="text" class="form-control" id="status" value="en-attente" readonly>
+                    <label for="status">status</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input  name="event" type="text" class="form-control" id="event"  >
+                    <label for="event">Nom de l'évennement</label>
+                </div>
+                
+                <div class ="form-floating mb-3">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+                <a href="{{ url_for('soumission_paiement') }}" class="btn btn-primary">Paiement</a>    
+            </form>
+        <table class="table table-dark table-striped" style="margin-left: auto; margin-right: auto; width: 80%;">
+            <thead>
+                <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Date</th>
+                <th scope="col">Emplacement</th>
+                <th scope="col">Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <td>{{ event[1] }}</td>
+                    <td>{{ event[2] }}</td>
+                    <td>{{ event[3] }}</td>
+                    <td>{{ event[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
 
 {% endblock %}
