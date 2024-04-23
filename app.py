@@ -41,6 +41,7 @@ def register():
                 
             user = User(nom_complet,username,hashed_password,email,status)
             message = UserDao.create(user)
+            return redirect(url_for('login'))
     return render_template('user/register.html', message=message,user=user)
 
 @app.route("/login", methods=["GET", "POST"])
@@ -221,7 +222,7 @@ def creer_reservation():
         message = ReservationDao.reserver_place(nouvelle_reservation)
 
         if "Success" in message:
-            return redirect(url_for('afficher_reservations'))
+            return redirect(url_for('soumission_paiement'))
         else:
             return render_template('reservation/reservation.html', message=message)
     else:
@@ -255,4 +256,3 @@ def merci():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
