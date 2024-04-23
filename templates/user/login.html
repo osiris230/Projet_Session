@@ -3,7 +3,7 @@
 
 {% block content %}
     <h1></br></br></h1>
-    <h1></br></br>Page de connexion</h1>
+    <h1 style="margin-left: auto; margin-right: auto; width: 80%;"></br></br>Page de connexion</h1>
     <div class="container">
     {% if message=='error'%}
     <p class="alert alert-danger">Tous les champs sont obligatoires !</p>
@@ -13,7 +13,7 @@
     <p class="alert alert-danger">Le serveur est actuellement hors service, veuillez contacter le support.</p>
     {%endif%}
     </div>
-    <form action="{{url_for('login')}}" method="POST">
+    <form action="{{url_for('login')}}" method="POST" style="margin-left: auto; margin-right: auto; width: 80%;">
         <div class="mb-3">
         <label for="username" class="form-label">Nom d'utilisateur</label>
         <input name="username" type="text" class="form-control" id="username" aria-describedby="username">

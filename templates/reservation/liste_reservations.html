@@ -8,15 +8,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Réservations</title>
-    <!-- Intégration du CDN de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="style.css">
 </head>
 <body>
     <div class="container mt-5">
         <h1></br></br></h1>
-        <h1 class="mb-4"></br></br>Liste des Places Réservées</h1>
+        <h1 class="mb-4" style="margin-left: auto; margin-right: auto; width: 80%;"></br></br>Liste des Places Réservées</h1>
        
-        <table class="table table-hover">
+        <table class="table table-hover" style="margin-left: auto; margin-right: auto; width: 80%;">
             <thead>
                 <tr>
                     <th scope="col">Place</th>
@@ -33,7 +32,6 @@
         </table>
         <a href="{{ url_for('events') }}" class="btn btn-primary">Voir les évennements</a>
     </div>
-    <!-- Intégration du CDN JavaScript de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
