@@ -5,15 +5,7 @@
 <div class="container mt-5">
     <h1 class="mb-4">Veuillez remplir ce formulaire pour enregistrer un nouvel utilisateur</h1>
 
-    <div>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </div>
+    
 
     <form action="{{url_for('register')}}" method="POST" class="needs-validation" novalidate>
         <div class="mb-3">

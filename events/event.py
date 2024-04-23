@@ -1,9 +1,11 @@
 class Event:
-    def __init__(self, nom, date, emplacement, prix):
+    def __init__(self, nom, date, emplacement, prix, images, description):
         self.__nom = nom
         self.__date = date
         self.__emplacement = emplacement
         self.__prix = prix
+        self.__images = images
+        self.__description = description
 
     @property
     def nom(self):
@@ -36,3 +38,19 @@ class Event:
     @prix.setter
     def prix(self, value):
         self.__prix = value
+
+    @property
+    def images(self):
+        return self.__images
+
+    @images.setter
+    def images(self, value):
+        self.__images = value
+
+    @property
+    def description(self):
+        return self.__description
+
+    @description.setter
+    def description(self, value):
+        self.__description = value

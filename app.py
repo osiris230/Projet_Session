@@ -96,7 +96,9 @@ def admin_events():
             date = request.form['date']
             emplacement = request.form['emplacement']
             prix = request.form['prix']
-            EventDao.ajouter_evenement(Event(nom, date, emplacement, prix))
+            images = request.form['images']
+            description = request.form['description']
+            EventDao.ajouter_evenement(Event(nom, date, emplacement, prix, images, description))
             pass
         elif action == 'edit':
             
@@ -104,8 +106,10 @@ def admin_events():
             date = request.form['date']
             emplacement = request.form['emplacement']
             prix = request.form['prix']
+            images = request.form['images']
+            description = request.form['description']
             event_id = request.form['event_id']
-            evt = Event(nom, date, emplacement, prix)
+            evt = Event(nom, date, emplacement, prix, images, description)
             EventDao.modifier_evenement(event_id, evt)
             pass
         elif action == 'cancel':

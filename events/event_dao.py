@@ -11,8 +11,8 @@ class EventDao:
 
     @classmethod
     def ajouter_evenement(cls, evt:Event):
-        sql = "INSERT INTO events (nom, date, emplacement, prix) VALUES (%s, %s, %s, %s)"
-        params = (evt.nom, evt.date, evt.emplacement, evt.prix)
+        sql = "INSERT INTO events (nom, date, emplacement, prix, images, description) VALUES (%s, %s, %s, %s, %s, %s )"
+        params = (evt.nom, evt.date, evt.emplacement, evt.prix, evt.images, evt.description)
         try:
             EventDao.connexion.cursor()
             EventDao.cursor.execute(sql, params)
@@ -37,9 +37,9 @@ class EventDao:
         
 
     @classmethod
-    def modifier_evenement(cls, event_id, evt: Event):
-        sql = "UPDATE events SET nom=%s, date=%s, emplacement=%s, prix=%s WHERE id=%s"
-        params = (evt.nom, evt.date, evt.emplacement, evt.prix, event_id)
+    def modifier_evenement(cls, event_id, evt:Event):
+        sql = "UPDATE events SET nom=%s, date=%s, emplacement=%s, prix=%s, images=%s, description=%s WHERE id=%s"
+        params = (evt.nom, evt.date, evt.emplacement, evt.prix, evt.images, evt.description, event_id)
         try:
             EventDao.connexion.cursor()
             EventDao.cursor.execute(sql, params)
