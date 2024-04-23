@@ -19,6 +19,7 @@ class ReservationDao:
                 ReservationDao.connexion.commit()
                 message = "Success"
             except Exception as ex:
+                ReservationDao.connexion.rollback()
                 message = "Error"
             return message
     
