@@ -15,7 +15,12 @@
 			<div id="page-wrapper">
 
 				<!-- Header -->
-					<header id="header" class="alt">
+				{% if is_main_page %}
+				<header id="header" class="alt">
+				{% else %}
+				<header id="header" class="inner">
+				{% endif %}
+					<div class="inner">
 						<h1><a href="default.html">TicketMain</a></h1>
 						<nav id="nav">
 							<ul>
@@ -54,9 +59,9 @@
 						</nav>
 					</header>
 
-					<div>
+					<main>
 						{% block content %} {% endblock %}
-					</div>
+					</main>
 
 				<!-- Footer -->
 					<footer id="footer">
