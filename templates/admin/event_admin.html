@@ -24,6 +24,8 @@
                 <td>{{ event[2]}}</td>
                 <td>{{ event[3]}}</td>
                 <td>{{ event[4]}}</td>
+                <td>{{ event[5]}}</td>
+                <td>{{ event[6]}}</td>
                 <td>
                     <form method="post" action="{{ url_for('admin_events') }}" style="display: inline;">
                         <input type="hidden" name="event_id" value="{{ event[0] }}">
@@ -32,6 +34,8 @@
                         <input type="date" name="date" value="{{ event[2] }}">
                         <input type="text" name="emplacement" value="{{ event[3] }}">
                         <input type="number" name="prix" value="{{ event[4]}}">
+                        <input type="text" name="images" value="{{ event[5]}}">
+                        <input type="text" name="description" value="{{ event[6]}}">
                         <button type="submit">Modifier</button>
                     </form>
                     <form method="post" action="{{ url_for('admin_events') }}" style="display: inline;">
