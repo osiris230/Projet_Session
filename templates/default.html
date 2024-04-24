@@ -29,8 +29,7 @@
 									<div id="menu">
 										<ul>
 											<li><a href="{{url_for('home')}}">Acceuil</a></li>
-											<li><a href="{{url_for('events')}}">Événements</a></li>
-											<li><a href="{{url_for('about')}}">À propos</a></li>
+											<li><a href="{{url_for('events')}}">Événements</a></li>											
 											{% if not session %}
 											<li><a href="{{url_for('login')}}">Connexion</a></li>
 											{% endif %}
@@ -46,6 +45,7 @@
 											{% if session['status'] == 'admin' %}
 											<li><a href="{{ url_for('admin_events') }}">Administration Évennement</a></li>
 											{% endif %}
+											<li><a href="{{url_for('about')}}">À propos</a></li>
 										</ul>
 
 										<!--<audio controls loop>
