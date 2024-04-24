@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ```
 ## Utilisation
 
-Instructions détaillées sur comment utiliser le système après installation.
+Afin de tester les fonctionalitées admin, veuillez vous connecter en tant que  admin/password.
 
 ## Fonctionnalités
  Gestion des Événements
@@ -40,6 +40,9 @@ Catégorisation : Attribution de catégories ou de tags à chaque événement.
 Visualisation : Affichage d'une liste d'événements avec nom, date, emplacement et prix.
 
 ## Gestion des Utilisateurs
+
+Administration des Utilisateurs : Gestion des comptes utilisateurs, attribution des rôles "Admin" ou "Client". Catégorisation : Attribution des privilèges et permissions correspondants à chaque rôle. 
+Visualisation : Affichage d'une liste des utilisateurs avec leur rôle attribué.
 
 ## Système de Réservation
 
