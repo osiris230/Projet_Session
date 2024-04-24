@@ -50,7 +50,7 @@
     </table>
 
     <h3>Ajouter un événement</h3>
-    <form method="post" action="{{ url_for('admin_events') }}">
+    <form method="post" action="{{ url_for('admin_events') }}" style="margin-bottom: auto; margin-right: auto; width: 80%;">
         <input type="hidden" name="action" value="add">
         <input type="text" name="nom" placeholder="Nom de l'événement" required>
         <input type="date" name="date" placeholder="Date de l'événement" required>
