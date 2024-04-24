@@ -41,7 +41,8 @@ Visualisation : Affichage d'une liste d'événements avec nom, date, emplacement
 
 ## Gestion des Utilisateurs
 
-Administration des Utilisateurs : Gestion des comptes utilisateurs, attribution des rôles "Admin" ou "Client". Catégorisation : Attribution des privilèges et permissions correspondants à chaque rôle. 
+Administration des Utilisateurs : Gestion des comptes utilisateurs, attribution des rôles "Admin" ou "Client". 
+Catégorisation : Attribution des privilèges et permissions correspondants à chaque rôle. 
 Visualisation : Affichage d'une liste des utilisateurs avec leur rôle attribué.
 
 ## Système de Réservation
