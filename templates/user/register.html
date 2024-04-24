@@ -2,13 +2,12 @@
 {% block title %} Ajouter un nouvel utilisateur {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1><br></br></h1>
-    <h1 class="mb-4" style="margin-left: auto; margin-right: auto; width: 80%;"></br></br>Veuillez remplir ce formulaire pour enregistrer un nouvel utilisateur</h1>
+<div class="container mt-5" style="margin-top: 55px; margin-left: auto; margin-right: auto; width: 80%;">
+    <h1 class="mb-4"  style="text-align:center;"></br></br>Veuillez remplir ce formulaire pour enregistrer un nouvel utilisateur</h1>
 
     
 
-    <form action="{{url_for('register')}}" method="POST" class="needs-validation" novalidate style="margin-left: auto; margin-right: auto; width: 80%;">
+    <form action="{{url_for('register')}}" method="POST" class="needs-validation" novalidate>
         <div class="mb-3">
             <label for="nom_complet" class="form-label">Nom complet</label>
             <input name="nom_complet" type="text" class="form-control" id="nom_complet" required>

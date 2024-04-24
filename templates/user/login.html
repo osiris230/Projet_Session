@@ -2,29 +2,31 @@
 {% block title %} Connexion {% endblock %}
 
 {% block content %}
-    <h1></br></br></h1>
-    <h1 style="margin-left: auto; margin-right: auto; width: 80%;"></br></br>Page de connexion</h1>
-    <div class="container">
-    {% if message=='error'%}
-    <p class="alert alert-danger">Tous les champs sont obligatoires !</p>
-    {% elif  username==None and message=='Success' %}
-    <p class="alert alert-warning">Nom d'utilisateur ou mot de passe incorrect.</p>
-    {% elif message=='Error' %}
-    <p class="alert alert-danger">Le serveur est actuellement hors service, veuillez contacter le support.</p>
-    {%endif%}
-    </div>
-    <form action="{{url_for('login')}}" method="POST" style="margin-left: auto; margin-right: auto; width: 80%;">
-        <div class="mb-3">
-        <label for="username" class="form-label">Nom d'utilisateur</label>
-        <input name="username" type="text" class="form-control" id="username" aria-describedby="username">
-        <div id="username" class="form-text">Nous allons partager vos information au plus offrant.</div>
+    <section class="full-page-div" style="margin-top: 55px; margin-left: auto; margin-right: auto; width: 80%;">
+        <h1 style="text-align:center;"></br></br>Page de connexion</h1>
+        <div class="container">
+        {% if message=='error'%}
+        <p class="alert alert-danger">Tous les champs sont obligatoires !</p>
+        {% elif  username==None and message=='Success' %}
+        <p class="alert alert-warning">Nom d'utilisateur ou mot de passe incorrect.</p>
+        {% elif message=='Error' %}
+        <p class="alert alert-danger">Le serveur est actuellement hors service, veuillez contacter le support.</p>
+        {%endif%}
         </div>
-        <div class="mb-3">
-        <label for="password" class="form-label">Mot de passe</label>
-        <input name="password" type="password" class="form-control" id="password">
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Se connecter</button>
-    </form>
+        <form action="{{url_for('login')}}" method="POST">
+            <div class="mb-3">
+            <label for="username" class="form-label">Nom d'utilisateur</label>
+            <input name="username" type="text" class="form-control" id="username" aria-describedby="username">
+            <div id="username" class="form-text">Nous allons partager vos information au plus offrant.</div>
+            </div>
+            <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input name="password" type="password" class="form-control" id="password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+
+    </section>
 
 {% endblock %}
