@@ -4,11 +4,11 @@
 
 {% block content %}
 
-<head>
+<head style="text-align:center;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Réservations</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="main.css">
 </head>
 <body>
     <div class="container mt-5">
@@ -24,13 +24,13 @@
             <tbody>
                 {% for reservation in reservations %}
                 <tr>
-                    <td>Place numéro : {{ reservation[2] }} - Status: {{ reservation[3] }} - Évennement: {{ reservation[4] }}</td>
+                    <td>Place numéro : {{ reservation[2] }} - Status: {{ reservation[3] }} - Événement: {{ reservation[4] }}</td>
                     
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{{ url_for('events') }}" class="btn btn-primary" style="text-align:center;">Voir les évennements</a>
+        <a href="{{ url_for('events') }}" class="btn btn-primary" style="text-align:center;">Voir les événements</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
